@@ -60,7 +60,6 @@ export default function Footer() {
               <button onClick={() => handleNavigation('#mi-camino')} className="hover:text-[#00c5c5] transition-colors text-left">Mi Camino</button>
               <button onClick={() => handleNavigation('#aprendizaje')} className="hover:text-[#00c5c5] transition-colors text-left">Aprendizaje</button>
               <button onClick={() => handleNavigation('#servicios')} className="hover:text-[#00c5c5] transition-colors text-left">Servicios</button>
-              <button onClick={() => handleNavigation('#colaboraciones')} className="hover:text-[#00c5c5] transition-colors text-left">Colaboraciones</button>
               <button onClick={() => handleNavigation('#contacto')} className="hover:text-[#00c5c5] transition-colors text-left">Contacto</button>
               <a href="#/contactame" className="hover:text-[#00c5c5] transition-colors font-medium text-left">Contáctame</a>
             </div>

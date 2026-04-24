@@ -13,7 +13,6 @@ export default function Header() {
     { name: 'Mi Camino', href: '#mi-camino', isSection: true },
     { name: 'Aprendizaje', href: '#aprendizaje', isSection: true },
     { name: 'Servicios', href: '#servicios', isSection: true },
-    { name: 'Colaboraciones', href: '#colaboraciones', isSection: true },
     { name: 'Contacto', href: '#/contactame', isSection: false }
   ];
 

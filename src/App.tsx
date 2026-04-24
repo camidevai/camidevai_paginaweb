@@ -5,7 +5,6 @@ import Historia from './components/Historia';
 import MiCamino from './components/MiCamino';
 import Aprendizaje from './components/Aprendizaje';
 import Servicios from './components/Servicios';
-import Colaboraciones from './components/Colaboraciones';
 import SocialLinks from './components/SocialLinks';
 import Footer from './components/Footer';
 import ContactButton from './components/ContactButton';
@@ -21,7 +20,6 @@ function App() {
         <MiCamino />
         <Aprendizaje />
         <Servicios />
-        <Colaboraciones />
         <SocialLinks />
       </main>
       <Footer />
