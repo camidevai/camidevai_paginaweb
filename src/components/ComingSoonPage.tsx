@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { EMAIL_JS_CONFIG } from '../config/constants';
 import GoogleCalendarButton from './GoogleCalendarButton';
+import BackgroundMusic from './BackgroundMusic';
 
 interface FormData {
   user_name: string;
@@ -581,6 +582,9 @@ export default function ComingSoonPage() {
           </button>
         </div>
       </div>
+
+      {/* Música de fondo exclusiva para esta página */}
+      <BackgroundMusic audioSrc="/audio/background-contacto.mp3" autoPlay={true} />
     </div>
   );
 }
