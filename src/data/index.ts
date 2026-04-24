@@ -158,30 +158,30 @@ export const socialLinks: SocialLink[] = [
   {
     name: 'Instagram',
     icon: Instagram,
-    followers: '142K+',
+    followers: '263K',
     url: 'https://www.instagram.com/camidevai/',
     color: 'bg-gradient-to-r from-purple-500 to-pink-500'
   },
   {
-    name: 'LinkedIn',
-    icon: Linkedin,
-    followers: '1K+',
-    url: 'https://www.linkedin.com/in/camilabanares/',
-    color: 'bg-blue-600'
-  },
-  {
     name: 'Facebook',
     icon: Facebook,
-    followers: '65K+',
+    followers: '165K',
     url: 'https://m.facebook.com/people/Camicatura-Digital/61564523003680/',
     color: 'bg-blue-500'
   },
   {
     name: 'TikTok',
     icon: MessageSquare,
-    followers: '43K+',
+    followers: '75.8K',
     url: 'https://www.tiktok.com/@camidevai',
     color: 'bg-black'
+  },
+  {
+    name: 'LinkedIn',
+    icon: Linkedin,
+    followers: '3.5K',
+    url: 'https://www.linkedin.com/in/camilabanares/',
+    color: 'bg-blue-600'
   }
 ];
 

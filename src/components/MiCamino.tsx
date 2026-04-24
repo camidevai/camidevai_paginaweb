@@ -64,7 +64,7 @@ export default function MiCamino() {
       periodo: "2024 - Actual",
       titulo: "Compartiendo el viaje",
       subtitulo: "CamiDevAI",
-      descripcion: "Con más de 246K seguidores comparto mi historia e inspiro a quienes, como yo, vienen de otros mundos y quieren adentrarse en tecnología.",
+      descripcion: "Con una comunidad de más de 507.000 seguidores comparto mi historia e inspiro a quienes, como yo, vienen de otros mundos y quieren adentrarse en tecnología.",
       icono: Sparkles,
       color: "from-[#00c5c5] to-[#00a5a5]",
     },

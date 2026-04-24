@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Brain, Menu, Heart, X } from 'lucide-react';
+import { Brain, Menu, X } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Header() {
@@ -66,16 +66,6 @@ export default function Header() {
               </button>
             ))}
 
-            {/* Botón de Donación */}
-            <a
-              href="https://www.paypal.com/donate/?hosted_button_id=BE44AS4XZZHDW"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#ffcc00] text-black font-semibold rounded-lg shadow-md hover:bg-[#e6b800] transition duration-300"
-            >
-              <Heart className="w-5 h-5 text-red-600" />
-              Donar
-            </a>
           </nav>
 
           {/* Botón Menú Móvil */}
@@ -109,17 +99,6 @@ export default function Header() {
               </button>
             ))}
 
-            {/* Botón de Donación Móvil */}
-            <a
-              href="https://www.paypal.com/donate/?hosted_button_id=BE44AS4XZZHDW"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#ffcc00] text-black font-semibold rounded-lg shadow-md hover:bg-[#e6b800] transition duration-300 mt-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <Heart className="w-5 h-5 text-red-600" />
-              Donar
-            </a>
           </nav>
         </div>
       )}

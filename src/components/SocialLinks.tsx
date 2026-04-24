@@ -1,35 +1,35 @@
 import React, { useRef, FormEvent, useState } from 'react';
-import { Instagram, Facebook, Linkedin, MessageSquare, Mail, Heart, Users, Sparkles } from 'lucide-react';
+import { Instagram, Facebook, Linkedin, MessageSquare, Mail, Users, Sparkles } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const socialLinks = [
   {
     name: 'Instagram',
     icon: Instagram,
-    followers: '142K+',
+    followers: '263K',
     url: 'https://www.instagram.com/camidevai/',
     color: 'bg-gradient-to-r from-purple-500 to-pink-500'
   },
   {
-    name: 'LinkedIn',
-    icon: Linkedin,
-    followers: '1K+',
-    url: 'https://www.linkedin.com/in/camilabanares/',
-    color: 'bg-blue-600'
-  },
-  {
     name: 'Facebook',
     icon: Facebook,
-    followers: '65K+',
+    followers: '165K',
     url: 'https://m.facebook.com/people/Camicatura-Digital/61564523003680/',
     color: 'bg-blue-500'
   },
   {
     name: 'TikTok',
     icon: MessageSquare,
-    followers: '43K+',
+    followers: '75.8K',
     url: 'https://www.tiktok.com/@camidevai',
     color: 'bg-black'
+  },
+  {
+    name: 'LinkedIn',
+    icon: Linkedin,
+    followers: '3.5K',
+    url: 'https://www.linkedin.com/in/camilabanares/',
+    color: 'bg-blue-600'
   }
 ];
 
@@ -255,25 +255,6 @@ export default function SocialLinks() {
         </div>
       </div>
 
-      <div className="mt-16 text-center">
-        <p className="text-lg text-gray-600 mb-4 font-medium">
-          🌟 Si mi contenido te ha ayudado, <br /> considera apoyarme para seguir creando más recursos gratuitos. 💙
-        </p>
-
-        <a
-          href="https://www.paypal.com/donate/?hosted_button_id=BE44AS4XZZHDW"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-transform duration-300"
-        >
-          <Heart className="w-6 h-6 text-red-600" />
-          Apóyame con un café ☕💙
-        </a>
-
-        <p className="text-gray-500 text-sm mt-4">
-          Cada donación me ayuda a seguir compartiendo conocimiento. ¡Gracias por tu apoyo! 🥰
-        </p>
-      </div>
     </section>
   );
 }

@@ -13,7 +13,7 @@ export default function About() {
               </span>
             </h2>
             <p className="text-gray-600 mb-6">
-              Ingeniera en Informática apasionada por la Inteligencia Artificial y la educación tecnológica. Con una comunidad vibrante que supera los 246,000 seguidores en Instagram, Facebook, TikTok y otras plataformas, comparto contenido educativo diseñado para transformar temas complejos de tecnología en explicaciones prácticas y accesibles.
+              Ingeniera en Informática apasionada por la Inteligencia Artificial y la educación tecnológica. Con una comunidad vibrante que supera los 507.000 seguidores en Instagram, Facebook, TikTok y LinkedIn, comparto contenido educativo diseñado para transformar temas complejos de tecnología en explicaciones prácticas y accesibles.
             </p>
             <p className="text-gray-600 mb-6">
               Mi objetivo es inspirar y empoderar a personas de todas las edades para explorar el mundo de la tecnología y la innovación. A través de mis redes sociales, ofrezco recursos, consejos y experiencias para aprender, crecer y disfrutar del camino tecnológico.
@@ -38,7 +38,7 @@ export default function About() {
                 <Heart className="h-6 w-6 text-[#00c5c5]" />
                 <div>
                   <h3 className="font-semibold">Impacto</h3>
-                  <p className="text-sm text-gray-500">Más de 246,000 seguidores</p>
+                  <p className="text-sm text-gray-500">Más de 507.000 seguidores</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">

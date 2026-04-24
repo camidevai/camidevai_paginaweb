@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, MapPin, Heart, Brain, ArrowUp } from 'lucide-react';
+import { Mail, MapPin, Brain, ArrowUp } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Footer() {
@@ -83,16 +83,6 @@ export default function Footer() {
                 <MapPin className="h-4 w-4 mr-2 text-[#00c5c5]" />
                 <span>Chile</span>
               </div>
-              {/* Donación */}
-              <a
-                href="https://www.paypal.com/donate/?hosted_button_id=BE44AS4XZZHDW"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center hover:text-[#00c5c5] transition-colors"
-              >
-                <Heart className="h-4 w-4 mr-2 text-pink-500" />
-                <span>Apóyame con un café</span>
-              </a>
             </div>
           </div>
         </div>
