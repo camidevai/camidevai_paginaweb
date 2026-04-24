@@ -124,14 +124,17 @@ export default function ComingSoonPage() {
 
     try {
       const emailData = {
-        user_name: formData.user_name,
-        user_email: formData.user_email,
-        company: formData.user_company || 'No especificada',
-        services: formData.collaboration_type,
-        phone: formData.user_phone ? `${formData.country_code} ${formData.user_phone}` : 'No proporcionado',
-        budget: formData.budget || 'No especificado',
-        message: formData.message || 'Sin mensaje adicional',
-        origin: formData.user_origin || 'No especificado',
+        user_name:         formData.user_name,
+        user_email:        formData.user_email,
+        company:           formData.user_company    || 'No especificada',
+        services:          formData.collaboration_type,
+        phone:             formData.user_phone ? `${formData.country_code} ${formData.user_phone}` : 'No proporcionado',
+        budget:            formData.budget           || 'No especificado',
+        message:           formData.message          || 'Sin mensaje adicional',
+        user_origin:       formData.user_origin      || 'No especificado',
+        // Alias para compatibilidad con variables del template
+        user_company:      formData.user_company    || 'No especificada',
+        collaboration_type: formData.collaboration_type,
       };
 
       await emailjs.send(

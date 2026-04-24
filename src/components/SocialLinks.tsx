@@ -144,6 +144,10 @@ export default function SocialLinks() {
             </div>
 
             <form id="contact-form" ref={formRef} onSubmit={sendEmail} className="space-y-4">
+              {/* Inputs ocultos: alias para compatibilidad con ambas versiones del template EmailJS */}
+              <input type="hidden" name="user_company" id="user_company_hidden" />
+              <input type="hidden" name="collaboration_type" id="collaboration_type_hidden" />
+
               <div>
                 <label htmlFor="user_name" className="block text-sm font-medium text-gray-700 mb-1">Tu nombre</label>
                 <input
@@ -175,42 +179,45 @@ export default function SocialLinks() {
                   type="text"
                   name="company"
                   placeholder="¿Representas a alguna empresa?"
+                  onChange={(e) => {
+                    const hidden = document.getElementById('user_company_hidden') as HTMLInputElement;
+                    if (hidden) hidden.value = e.target.value;
+                  }}
                   className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
                 />
               </div>
 
-
-
+              <div>
+                <label htmlFor="services" className="block text-sm font-medium text-gray-700 mb-1">¿Qué tipo de colaboración buscas?</label>
+                <select
+                  id="services"
+                  name="services"
+                  onChange={(e) => {
+                    const hidden = document.getElementById('collaboration_type_hidden') as HTMLInputElement;
+                    if (hidden) hidden.value = e.target.value;
+                  }}
+                  className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
+                  required
+                >
+                  <option value="">Selecciona una opción</option>
+                  <option value="Automatización con IA">Automatización con IA</option>
+                  <option value="Creación de sitio web">Creación de sitio web</option>
+                  <option value="Contenido para marca">Contenido para mi marca</option>
+                  <option value="Charla o curso">Charla o curso</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
 
               <div>
-  <label htmlFor="services" className="block text-sm font-medium text-gray-700 mb-1">¿Qué tipo de colaboración buscas?</label>
-  <select
-    id="services"
-    name="services"
-    className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
-    required
-  >
-    <option value="">Selecciona una opción</option>
-    <option value="Automatización con IA">Automatización con IA</option>
-    <option value="Creación de sitio web">Creación de sitio web</option>
-    <option value="Contenido para marca">Contenido para mi marca</option>
-    <option value="Charla o curso">Charla o curso</option>
-    <option value="Otro">Otro</option>
-  </select>
-</div>
-
-<div>
-  <label htmlFor="user_origin" className="block text-sm font-medium text-gray-700 mb-1">¿Cómo me conociste?</label>
-  <input
-    id="user_origin"
-    type="text"
-    name="user_origin"
-    placeholder="Ej: Instagram, TikTok, recomendación..."
-    className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
-  />
-</div>
-
-
+                <label htmlFor="user_origin" className="block text-sm font-medium text-gray-700 mb-1">¿Cómo me conociste?</label>
+                <input
+                  id="user_origin"
+                  type="text"
+                  name="user_origin"
+                  placeholder="Ej: Instagram, TikTok, recomendación..."
+                  className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
+                />
+              </div>
 
 
 
