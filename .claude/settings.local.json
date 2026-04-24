@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(king-framework:genesis)",
+      "Bash(mkdir -p C:/Users/Camila/Desktop/CamidevAi-main/.king)",
+      "Bash(echo \"merge\")",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(git add *)"
+    ]
+  }
+}
