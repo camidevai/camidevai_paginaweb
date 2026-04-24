@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import {
   ArrowLeft, ArrowRight, Check, Mail, Phone,
-  Building, MessageSquare, User, Star, Sparkles
+  Building, MessageSquare, User, Star, Sparkles, CalendarDays
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { EMAIL_JS_CONFIG } from '../config/constants';
+import GoogleCalendarButton from './GoogleCalendarButton';
 
 interface FormData {
   user_name: string;
@@ -557,6 +558,18 @@ export default function ComingSoonPage() {
               )}
             </div>
           </form>
+        </div>
+
+        {/* Separador con opción de agendar */}
+        <div className="mt-6 bg-slate-800/40 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50">
+          <div className="flex items-center gap-3 mb-4">
+            <CalendarDays className="h-5 w-5 text-[#00c5c5] flex-shrink-0" />
+            <div>
+              <p className="text-white font-semibold text-sm">¿Prefieres agendar directamente?</p>
+              <p className="text-slate-400 text-xs">Elige un horario en mi calendario y hablamos en vivo.</p>
+            </div>
+          </div>
+          <GoogleCalendarButton />
         </div>
 
         <div className="text-center mt-5">

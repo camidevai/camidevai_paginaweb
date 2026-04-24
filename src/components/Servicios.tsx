@@ -1,6 +1,6 @@
 import React from 'react';
 import { Bot, Globe, Video, Presentation, ArrowRight } from 'lucide-react';
-import { scrollToContactForm } from '../utils/scrollUtils';
+import { useNavigate } from 'react-router-dom';
 
 interface Servicio {
   titulo: string;
@@ -62,6 +62,7 @@ const servicios: Servicio[] = [
 ];
 
 export default function Servicios() {
+  const navigate = useNavigate();
   return (
     <section id="servicios" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -105,14 +106,12 @@ export default function Servicios() {
                 </div>
 
                 <button
-                  onClick={scrollToContactForm}
+                  onClick={() => navigate('/contactame')}
                   className={`inline-flex items-center text-white px-6 py-3 rounded-full bg-gradient-to-r ${servicio.color} hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer font-semibold relative overflow-hidden group`}
                   style={{ boxShadow: '0 4px 15px -3px rgba(0,0,0,0.1)' }}
                 >
-                  {/* Efecto de brillo en hover */}
                   <span className="absolute inset-0 bg-gradient-to-r from-white to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-
-                  <span>Consultar</span>
+                  <span>Quiero este servicio</span>
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
               </div>
@@ -128,7 +127,7 @@ export default function Servicios() {
                 Me encantaría escuchar tus ideas y ayudarte a hacerlas realidad. Ya sea que necesites automatizar procesos, crear un sitio web impactante, generar contenido que conecte con tu audiencia o aprender sobre las últimas tecnologías, estoy aquí para acompañarte en el camino.
               </p>
               <button
-                onClick={scrollToContactForm}
+                onClick={() => navigate('/contactame')}
                 className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#00c5c5] to-[#00a5a5] text-white rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer font-bold relative overflow-hidden group"
                 style={{ boxShadow: '0 10px 15px -3px rgba(0, 197, 197, 0.2), 0 4px 6px -4px rgba(0, 197, 197, 0.2)' }}
               >

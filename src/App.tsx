@@ -5,6 +5,9 @@ import Historia from './components/Historia';
 import MiCamino from './components/MiCamino';
 import Aprendizaje from './components/Aprendizaje';
 import Servicios from './components/Servicios';
+import ComoTrabajo from './components/ComoTrabajo';
+import Testimonios from './components/Testimonios';
+import FAQ from './components/FAQ';
 import SocialLinks from './components/SocialLinks';
 import Footer from './components/Footer';
 import ContactButton from './components/ContactButton';
@@ -20,6 +23,9 @@ function App() {
         <MiCamino />
         <Aprendizaje />
         <Servicios />
+        <ComoTrabajo />
+        <Testimonios />
+        <FAQ />
         <SocialLinks />
       </main>
       <Footer />
