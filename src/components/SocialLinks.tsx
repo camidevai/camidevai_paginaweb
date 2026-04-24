@@ -1,0 +1,279 @@
+import React, { useRef, FormEvent, useState } from 'react';
+import { Instagram, Facebook, Linkedin, MessageSquare, Mail, Heart, Users, Sparkles } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+
+const socialLinks = [
+  {
+    name: 'Instagram',
+    icon: Instagram,
+    followers: '142K+',
+    url: 'https://www.instagram.com/camidevai/',
+    color: 'bg-gradient-to-r from-purple-500 to-pink-500'
+  },
+  {
+    name: 'LinkedIn',
+    icon: Linkedin,
+    followers: '1K+',
+    url: 'https://www.linkedin.com/in/camilabanares/',
+    color: 'bg-blue-600'
+  },
+  {
+    name: 'Facebook',
+    icon: Facebook,
+    followers: '65K+',
+    url: 'https://m.facebook.com/people/Camicatura-Digital/61564523003680/',
+    color: 'bg-blue-500'
+  },
+  {
+    name: 'TikTok',
+    icon: MessageSquare,
+    followers: '43K+',
+    url: 'https://www.tiktok.com/@camidevai',
+    color: 'bg-black'
+  }
+];
+
+export default function SocialLinks() {
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    setLoading(true);
+
+    try {
+      await emailjs.sendForm(
+        'service_t0cvv27',
+        'template_lh7gtfd',
+        formRef.current,
+        { publicKey: '1aZEaVP20Ayfhpkp0' }
+      );
+      alert('Correo enviado correctamente');
+      formRef.current.reset();
+    } catch (error) {
+      alert('Error al enviar el correo: ');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <section id="contacto" className="py-20 bg-gradient-to-br from-white to-[#f0fdfd]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#00c5c5]/10 mb-6">
+            <Users className="h-8 w-8 text-[#00c5c5]" />
+          </div>
+          <h2 className="text-4xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-[#00c5c5] to-[#00a5a5] text-transparent bg-clip-text">
+              Mi Comunidad
+            </span>
+          </h2>
+          <p className="text-gray-600 max-w-3xl mx-auto">
+            Juntos estamos creando un espacio donde la tecnología es accesible para todos
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {socialLinks.map((social) => (
+            <a
+              key={social.name}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block bg-white rounded-xl shadow-sm hover:shadow-md transition-all p-6 relative overflow-hidden"
+            >
+              {/* Decoración de fondo */}
+              <div className="absolute -right-12 -top-12 w-24 h-24 bg-gray-50 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+
+              <div className="relative z-10">
+                <div className={`${social.color} w-14 h-14 rounded-full flex items-center justify-center mb-4`}>
+                  <social.icon className="h-7 w-7 text-white" />
+                </div>
+                <h3 className="font-semibold text-lg mb-1">{social.name}</h3>
+                <p className="text-gray-500">{social.followers} seguidores</p>
+                <p className="mt-3 text-sm text-[#00c5c5] group-hover:underline">Visitar perfil</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Formulario de contacto */}
+          <div className="bg-white p-8 rounded-xl shadow-sm">
+            <div className="flex items-center mb-6">
+              <Mail className="h-6 w-6 text-[#00c5c5] mr-3" />
+              <h3 className="text-2xl font-bold text-gray-800">Escríbeme</h3>
+            </div>
+
+            <form id="contact-form" ref={formRef} onSubmit={sendEmail} className="space-y-4">
+              <div>
+                <label htmlFor="user_name" className="block text-sm font-medium text-gray-700 mb-1">Tu nombre</label>
+                <input
+                  id="user_name"
+                  type="text"
+                  name="user_name"
+                  placeholder="¿Cómo te llamas?"
+                  className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="user_email" className="block text-sm font-medium text-gray-700 mb-1">Tu email</label>
+                <input
+                  id="user_email"
+                  type="email"
+                  name="user_email"
+                  placeholder="Para poder responderte"
+                  className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="user_company" className="block text-sm font-medium text-gray-700 mb-1">Empresa (Opcional)</label>
+                <input
+                  id="user_company"
+                  type="text"
+                  name="user_company"
+                  placeholder="¿Representas a alguna empresa?"
+                  className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
+                />
+              </div>
+
+
+
+
+              <div>
+  <label htmlFor="collaboration_type" className="block text-sm font-medium text-gray-700 mb-1">¿Qué tipo de colaboración buscas?</label>
+  <select
+    id="collaboration_type"
+    name="collaboration_type"
+    className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
+    required
+  >
+    <option value="">Selecciona una opción</option>
+    <option value="Automatización con IA">Automatización con IA</option>
+    <option value="Creación de sitio web">Creación de sitio web</option>
+    <option value="Contenido para marca">Contenido para mi marca</option>
+    <option value="Charla o curso">Charla o curso</option>
+    <option value="Otro">Otro</option>
+  </select>
+</div>
+
+<div>
+  <label htmlFor="user_origin" className="block text-sm font-medium text-gray-700 mb-1">¿Cómo me conociste?</label>
+  <input
+    id="user_origin"
+    type="text"
+    name="user_origin"
+    placeholder="Ej: Instagram, TikTok, recomendación..."
+    className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
+  />
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Tu mensaje</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Cuéntame en qué puedo ayudarte"
+                  rows={4}
+                  className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className={`w-full bg-[#00c5c5] text-white py-3 rounded-lg font-semibold transition-all ${
+                  loading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#009999]"
+                }`}
+                disabled={loading}
+              >
+                {loading ? "Enviando..." : "Enviar Mensaje"}
+              </button>
+            </form>
+          </div>
+
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Construyamos juntos</h3>
+              <p className="text-gray-600">
+                Mi comunidad es el corazón de todo lo que hago. Cada mensaje, cada comentario, cada interacción es una oportunidad para aprender y crecer juntos. No importa si estás dando tus primeros pasos en tecnología o si ya tienes experiencia, aquí hay espacio para todos.
+              </p>
+            </div>
+
+            <div className="bg-[#00c5c5]/10 p-6 rounded-xl">
+              <div className="flex items-center mb-3">
+                <Sparkles className="h-5 w-5 text-[#00c5c5] mr-2" />
+                <h4 className="font-semibold text-gray-800">¿Por qué conectar?</h4>
+              </div>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-start">
+                  <span className="text-[#00c5c5] mr-2">•</span>
+                  Para colaboraciones y proyectos
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#00c5c5] mr-2">•</span>
+                  Consultas sobre mis servicios
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#00c5c5] mr-2">•</span>
+                  Compartir tu historia de transformación
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#00c5c5] mr-2">•</span>
+                  Sugerencias para contenido futuro
+                </li>
+              </ul>
+            </div>
+
+            <div className="text-center">
+              <p className="text-gray-500 italic mb-4">
+                "La tecnología es más poderosa cuando nos conecta, no cuando nos aísla."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-16 text-center">
+        <p className="text-lg text-gray-600 mb-4 font-medium">
+          🌟 Si mi contenido te ha ayudado, <br /> considera apoyarme para seguir creando más recursos gratuitos. 💙
+        </p>
+
+        <a
+          href="https://www.paypal.com/donate/?hosted_button_id=BE44AS4XZZHDW"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-transform duration-300"
+        >
+          <Heart className="w-6 h-6 text-red-600" />
+          Apóyame con un café ☕💙
+        </a>
+
+        <p className="text-gray-500 text-sm mt-4">
+          Cada donación me ayuda a seguir compartiendo conocimiento. ¡Gracias por tu apoyo! 🥰
+        </p>
+      </div>
+    </section>
+  );
+}
