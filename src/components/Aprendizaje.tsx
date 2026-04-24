@@ -21,6 +21,7 @@ const educationList: EducationItem[] = [
     period: "2017 - 2022",
     description: "Estudié mientras trabajaba a tiempo completo y criaba a mis hijos. La ingeniería informática me dio las bases sólidas para todo lo que vendría después.",
     skills: ["Pensamiento lógico", "Resolución de problemas", "Adaptabilidad", "Perseverancia"],
+    certificatePdf: "/img/miCamino/titulo.jpg",
     logo: "/img/miAprendizaje/images.png",
     color: "from-blue-500 to-indigo-600",
     logoBg: "white"
@@ -147,10 +148,10 @@ export default function Aprendizaje() {
                       <a
                         href={edu.certificatePdf}
                         download
-                        className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg text-white bg-gradient-to-r from-purple-500 to-pink-600 hover:opacity-90 transition-opacity"
+                        className={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg text-white bg-gradient-to-r ${edu.color} hover:opacity-90 transition-opacity`}
                       >
                         <Download className="h-3 w-3" />
-                        Descargar certificado
+                        Descargar título
                       </a>
                     )}
                   </div>
