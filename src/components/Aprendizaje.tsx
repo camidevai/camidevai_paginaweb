@@ -1,4 +1,4 @@
-import { ExternalLink, Sparkles, CheckCircle } from 'lucide-react';
+import { ExternalLink, Sparkles, CheckCircle, Download } from 'lucide-react';
 
 interface EducationItem {
   title: string;
@@ -8,6 +8,7 @@ interface EducationItem {
   description: string;
   skills: string[];
   certificateLink?: string;
+  certificatePdf?: string;
   logo: string;
   color: string;
   logoBg: string;
@@ -53,6 +54,7 @@ const educationList: EducationItem[] = [
     status: "Finalizado",
     description: "Postgrado en IA: prompt engineering avanzado, agentes GPT, generación de contenido con IA y automatizaciones No-Code con Make, Zapier y N8N.",
     skills: ["Prompt Engineering", "Agentes GPT", "Make / N8N / Zapier", "Transformación Digital"],
+    certificatePdf: "/img/miCamino/Certificado de Finalización-11.pdf",
     logo: "/img/miAprendizaje/centeia.png",
     color: "from-purple-500 to-pink-600",
     logoBg: "#131415"
@@ -128,17 +130,29 @@ export default function Aprendizaje() {
                   ))}
                 </div>
 
-                {edu.certificateLink && (
-                  <div className="mt-auto pt-1">
-                    <a
-                      href={edu.certificateLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg text-white bg-gradient-to-r ${edu.color} hover:opacity-90 transition-opacity`}
-                    >
-                      <ExternalLink className="h-3 w-3" />
-                      Ver certificación
-                    </a>
+                {(edu.certificateLink || edu.certificatePdf) && (
+                  <div className="mt-auto pt-1 flex flex-wrap gap-2">
+                    {edu.certificateLink && (
+                      <a
+                        href={edu.certificateLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg text-white bg-gradient-to-r ${edu.color} hover:opacity-90 transition-opacity`}
+                      >
+                        <ExternalLink className="h-3 w-3" />
+                        Ver certificación
+                      </a>
+                    )}
+                    {edu.certificatePdf && (
+                      <a
+                        href={edu.certificatePdf}
+                        download
+                        className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg text-white bg-gradient-to-r from-purple-500 to-pink-600 hover:opacity-90 transition-opacity"
+                      >
+                        <Download className="h-3 w-3" />
+                        Descargar certificado
+                      </a>
+                    )}
                   </div>
                 )}
               </div>

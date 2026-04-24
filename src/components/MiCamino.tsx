@@ -1,8 +1,20 @@
 import React from 'react';
-import { Milestone, Route, Timer, Sparkles, Heart } from 'lucide-react';
+import { Route, Timer, Sparkles, Heart, Briefcase, Crown } from 'lucide-react';
+
+interface Etapa {
+  periodo: string;
+  titulo: string;
+  subtitulo: string;
+  descripcion: string;
+  icono: React.ElementType;
+  color: string;
+  logo?: string;
+  logoBg?: string;
+  destacado?: boolean;
+}
 
 export default function MiCamino() {
-  const etapas = [
+  const etapas: Etapa[] = [
     {
       periodo: "2013 - 2022",
       titulo: "El comienzo",
@@ -28,12 +40,25 @@ export default function MiCamino() {
       color: "from-blue-500 to-cyan-400",
     },
     {
-      periodo: "2022 - Actual",
-      titulo: "Crecimiento",
-      subtitulo: "TUXPAN",
-      descripcion: "Como ingeniera de proyectos descubrí la IA y cómo transformaba mi trabajo. Fue como encontrar una superpotencia que estaba esperando ser activada.",
-      icono: Milestone,
+      periodo: "2024 - Actual",
+      titulo: "CMO · Informatik-AI",
+      subtitulo: "Chief Marketing Officer",
+      descripcion: "Lidero la estrategia de comunicación y posicionamiento de Informatik-AI, empresa especializada en soluciones de inteligencia artificial. Combino experiencia tecnológica y presencia digital para construir puentes entre la IA y las personas.",
+      icono: Briefcase,
       color: "from-emerald-500 to-teal-400",
+      logo: "/img/miCamino/logo informatik-ai.png",
+      logoBg: "white",
+    },
+    {
+      periodo: "2024 - Actual",
+      titulo: "Vicepresidenta · CCHIA",
+      subtitulo: "Cámara Chilena de Inteligencia Artificial",
+      descripcion: "Elegida Vicepresidenta de la Cámara Chilena de Inteligencia Artificial, el organismo que reúne a las empresas y profesionales que lideran la adopción responsable de la IA en Chile. Un honor que refleja el camino recorrido y el compromiso con el futuro de la tecnología en nuestro país.",
+      icono: Crown,
+      color: "from-amber-500 to-orange-500",
+      logo: "/img/miCamino/logo cchia.png",
+      logoBg: "white",
+      destacado: true,
     },
     {
       periodo: "2024 - Actual",
@@ -42,7 +67,7 @@ export default function MiCamino() {
       descripcion: "Con más de 246K seguidores comparto mi historia e inspiro a quienes, como yo, vienen de otros mundos y quieren adentrarse en tecnología.",
       icono: Sparkles,
       color: "from-[#00c5c5] to-[#00a5a5]",
-    }
+    },
   ];
 
   return (
@@ -82,7 +107,25 @@ export default function MiCamino() {
 
                   {/* Card */}
                   <div className={`ml-12 md:ml-0 md:w-[46%] ${isRight ? 'md:mr-auto md:pr-6' : 'md:ml-auto md:pl-6'}`}>
-                    <div className="bg-white rounded-xl p-4 shadow-md border border-gray-100 hover:shadow-lg transition-shadow duration-200">
+                    <div className={`bg-white rounded-xl p-4 shadow-md border hover:shadow-lg transition-shadow duration-200 ${etapa.destacado ? 'border-amber-300 ring-1 ring-amber-200' : 'border-gray-100'}`}>
+
+                      {/* Logo si existe */}
+                      {etapa.logo && (
+                        <div className="flex items-center gap-3 mb-3">
+                          <div
+                            className="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center overflow-hidden flex-shrink-0 shadow-sm"
+                            style={{ backgroundColor: etapa.logoBg ?? 'white' }}
+                          >
+                            <img src={etapa.logo} alt={etapa.subtitulo} className="w-8 h-8 object-contain" />
+                          </div>
+                          {etapa.destacado && (
+                            <span className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-semibold">
+                              <Crown className="h-3 w-3" /> Liderazgo nacional
+                            </span>
+                          )}
+                        </div>
+                      )}
+
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <h3 className="font-bold text-gray-800 text-sm">{etapa.titulo}</h3>
                         <span className="text-xs bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded-full font-medium border border-yellow-200">
@@ -99,7 +142,7 @@ export default function MiCamino() {
           </div>
         </div>
 
-        {/* Final quote - compact */}
+        {/* Final quote */}
         <div className="mt-10 text-center">
           <p className="text-sm italic text-gray-500 max-w-xl mx-auto">
             "Mi camino no ha sido lineal ni perfecto, pero cada paso me ha traído hasta aquí. Y esto es solo el comienzo."
