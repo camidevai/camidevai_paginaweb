@@ -169,11 +169,11 @@ export default function SocialLinks() {
               </div>
 
               <div>
-                <label htmlFor="user_company" className="block text-sm font-medium text-gray-700 mb-1">Empresa (Opcional)</label>
+                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Empresa (Opcional)</label>
                 <input
-                  id="user_company"
+                  id="company"
                   type="text"
-                  name="user_company"
+                  name="company"
                   placeholder="¿Representas a alguna empresa?"
                   className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
                 />
@@ -183,10 +183,10 @@ export default function SocialLinks() {
 
 
               <div>
-  <label htmlFor="collaboration_type" className="block text-sm font-medium text-gray-700 mb-1">¿Qué tipo de colaboración buscas?</label>
+  <label htmlFor="services" className="block text-sm font-medium text-gray-700 mb-1">¿Qué tipo de colaboración buscas?</label>
   <select
-    id="collaboration_type"
-    name="collaboration_type"
+    id="services"
+    name="services"
     className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#00c5c5]/50 focus:border-[#00c5c5] outline-none transition-all"
     required
   >
