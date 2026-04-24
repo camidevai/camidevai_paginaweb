@@ -10,6 +10,7 @@ import { EMAIL_JS_CONFIG } from '../config/constants';
 interface FormData {
   user_name: string;
   user_email: string;
+  has_company: string;
   user_company: string;
   collaboration_type: string;
   user_origin: string;
@@ -81,7 +82,7 @@ export default function ComingSoonPage() {
   const [submitted, setSubmitted]     = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
-    user_name: '', user_email: '', user_company: '',
+    user_name: '', user_email: '', has_company: '', user_company: '',
     collaboration_type: '', user_origin: '',
     user_phone: '', country_code: '+56', budget: '', message: '',
   });
@@ -110,9 +111,11 @@ export default function ComingSoonPage() {
       else if (!EMAIL_REGEX.test(v)) e.user_email = 'Ingresa un email válido (ej: nombre@dominio.com)';
     }
     if (step === 3) {
-      const v = formData.user_company.trim();
-      if (!v)                e.user_company = 'Obligatorio — si es personal escribe "Proyecto personal"';
-      else if (v.length < MIN_COMPANY) e.user_company = `Mínimo ${MIN_COMPANY} caracteres`;
+      if (!formData.has_company) e.has_company = 'Selecciona una opción';
+      else if (formData.has_company === 'si' && !formData.user_company.trim())
+        e.user_company = 'Escribe el nombre de tu empresa';
+      else if (formData.has_company === 'si' && formData.user_company.trim().length < MIN_COMPANY)
+        e.user_company = `Mínimo ${MIN_COMPANY} caracteres`;
     }
     if (step === 4) {
       if (!formData.collaboration_type) e.collaboration_type = 'Selecciona un tipo de colaboración';
@@ -314,25 +317,62 @@ export default function ComingSoonPage() {
               </div>
             )}
 
-            {/* ── Paso 3: Empresa ─────────────────────────────── */}
+            {/* ── Paso 3: Empresa — SÍ / NO ───────────────────── */}
             {currentStep === 3 && (
               <div>
-                <StepHeader icon={Building} title="¿Representas alguna empresa?" subtitle='Si es personal, escribe "Proyecto personal"' />
-                <div className="relative">
-                  <input
-                    type="text"
-                    value={formData.user_company}
-                    onChange={(e) => set('user_company', e.target.value)}
-                    placeholder="Empresa o Proyecto personal"
-                    maxLength={MAX_COMPANY}
-                    autoFocus
-                    className={inputCls(!!errors.user_company)}
-                  />
-                  <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-slate-500 pointer-events-none">
-                    {formData.user_company.length}/{MAX_COMPANY}
-                  </span>
+                <StepHeader icon={Building} title="¿Representas alguna empresa?" subtitle="Cuéntanos si vienes de una organización o es un proyecto propio" />
+
+                <div className="grid grid-cols-2 gap-3 mb-4">
+                  {[
+                    { value: 'si', label: 'Sí, represento una empresa', emoji: '🏢' },
+                    { value: 'no', label: 'No, es un proyecto personal', emoji: '🙋' },
+                  ].map((opt) => {
+                    const selected = formData.has_company === opt.value;
+                    return (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => {
+                          set('has_company', opt.value);
+                          if (opt.value === 'no') set('user_company', 'Proyecto personal');
+                        }}
+                        className={`flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all duration-200 ${
+                          selected
+                            ? 'border-[#00c5c5] bg-[#00c5c5]/15 shadow-lg shadow-[#00c5c5]/10'
+                            : 'border-slate-600/60 bg-slate-700/30 hover:border-slate-500'
+                        }`}
+                      >
+                        <span className="text-3xl">{opt.emoji}</span>
+                        <span className={`text-xs font-medium text-center leading-tight ${selected ? 'text-[#00c5c5]' : 'text-slate-300'}`}>
+                          {opt.label}
+                        </span>
+                        {selected && <Check className="h-3.5 w-3.5 text-[#00c5c5]" />}
+                      </button>
+                    );
+                  })}
                 </div>
-                <Err msg={errors.user_company} />
+                <Err msg={errors.has_company} />
+
+                {/* Input de nombre de empresa solo si eligió SÍ */}
+                {formData.has_company === 'si' && (
+                  <div className="mt-3">
+                    <div className="relative">
+                      <input
+                        type="text"
+                        value={formData.user_company}
+                        onChange={(e) => set('user_company', e.target.value)}
+                        placeholder="Nombre de tu empresa"
+                        maxLength={MAX_COMPANY}
+                        autoFocus
+                        className={inputCls(!!errors.user_company)}
+                      />
+                      <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs text-slate-500 pointer-events-none">
+                        {formData.user_company.length}/{MAX_COMPANY}
+                      </span>
+                    </div>
+                    <Err msg={errors.user_company} />
+                  </div>
+                )}
               </div>
             )}
 
