@@ -1,6 +1,7 @@
 import React, { useRef, FormEvent, useState } from 'react';
-import { Instagram, Facebook, Linkedin, MessageSquare, Mail, Users, Sparkles } from 'lucide-react';
+import { Instagram, Facebook, Linkedin, MessageSquare, Mail, Users, Sparkles, CalendarDays } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import GoogleCalendarButton from './GoogleCalendarButton';
 
 const socialLinks = [
   {
@@ -74,6 +75,38 @@ export default function SocialLinks() {
           <p className="text-gray-600 max-w-3xl mx-auto">
             Juntos estamos creando un espacio donde la tecnología es accesible para todos
           </p>
+        </div>
+
+        {/* Banner de reserva destacado */}
+        <div className="mb-12 relative overflow-hidden rounded-2xl shadow-xl">
+          {/* Fondo degradado */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#00c5c5] via-[#00a5a5] to-[#007f7f]" />
+          {/* Círculos decorativos */}
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full" />
+          <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-white/10 rounded-full" />
+          <div className="absolute top-1/2 right-1/4 w-20 h-20 bg-white/5 rounded-full" />
+
+          <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 p-8 md:p-10">
+            {/* Texto */}
+            <div className="flex-1 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full text-white text-xs font-semibold mb-4">
+                <CalendarDays className="h-3.5 w-3.5" />
+                Agenda disponible
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                ¿Trabajamos juntos?
+              </h3>
+              <p className="text-white/80 text-sm md:text-base max-w-md">
+                Reserva una reunión conmigo directamente en mi calendario. Hablemos de tu proyecto, consultoría en IA o colaboración.
+              </p>
+            </div>
+
+            {/* Botón Google Calendar */}
+            <div className="flex-shrink-0 flex flex-col items-center gap-3">
+              <GoogleCalendarButton />
+              <p className="text-white/60 text-xs">Sin costo · Elige el horario que prefieras</p>
+            </div>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">

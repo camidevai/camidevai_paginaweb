@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Brain, Menu, X } from 'lucide-react';
+import { Brain, Menu, X, CalendarDays } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Header() {
@@ -66,6 +66,15 @@ export default function Header() {
               </button>
             ))}
 
+            <a
+              href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2uz1JFoc9bKbUpVzeIlg9eFnUKXaBtydshlgQQDQPHMQzLc1I-vm4bvW6GK0zo-gGcH4spWo3l?gv=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#00c5c5] to-[#00a5a5] text-white text-sm font-semibold rounded-lg shadow-sm hover:shadow-md hover:opacity-90 transition-all"
+            >
+              <CalendarDays className="w-4 h-4" />
+              Agendar cita
+            </a>
           </nav>
 
           {/* Botón Menú Móvil */}
@@ -99,6 +108,16 @@ export default function Header() {
               </button>
             ))}
 
+            <a
+              href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2uz1JFoc9bKbUpVzeIlg9eFnUKXaBtydshlgQQDQPHMQzLc1I-vm4bvW6GK0zo-gGcH4spWo3l?gv=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-[#00c5c5] to-[#00a5a5] text-white font-semibold rounded-lg shadow-sm mt-2"
+            >
+              <CalendarDays className="w-4 h-4" />
+              Agendar cita
+            </a>
           </nav>
         </div>
       )}
