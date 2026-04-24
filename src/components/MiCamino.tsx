@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Timer, Sparkles, Heart, Briefcase, Crown } from 'lucide-react';
+import { Route, Timer, Sparkles, Heart, Briefcase, Crown, Milestone } from 'lucide-react';
 
 interface Etapa {
   periodo: string;
@@ -40,25 +40,12 @@ export default function MiCamino() {
       color: "from-blue-500 to-cyan-400",
     },
     {
-      periodo: "2024 - Actual",
-      titulo: "CMO · Informatik-AI",
-      subtitulo: "Chief Marketing Officer",
-      descripcion: "Lidero la estrategia de comunicación y posicionamiento de Informatik-AI, empresa especializada en soluciones de inteligencia artificial. Combino experiencia tecnológica y presencia digital para construir puentes entre la IA y las personas.",
-      icono: Briefcase,
+      periodo: "2022 - ago. 2025",
+      titulo: "Desarrolladora Full Stack · I+D",
+      subtitulo: "TUXPAN",
+      descripcion: "Trabajé en el área de Investigación y Desarrollo construyendo soluciones tecnológicas con Node.js y Python. Fue aquí donde profundicé en la inteligencia artificial y descubrí cómo podía transformar radicalmente mi forma de trabajar y crear.",
+      icono: Milestone,
       color: "from-emerald-500 to-teal-400",
-      logo: "/img/miCamino/logo informatik-ai.png",
-      logoBg: "white",
-    },
-    {
-      periodo: "2024 - Actual",
-      titulo: "Vicepresidenta · CCHIA",
-      subtitulo: "Cámara Chilena de Inteligencia Artificial",
-      descripcion: "Elegida Vicepresidenta de la Cámara Chilena de Inteligencia Artificial, el organismo que reúne a las empresas y profesionales que lideran la adopción responsable de la IA en Chile. Un honor que refleja el camino recorrido y el compromiso con el futuro de la tecnología en nuestro país.",
-      icono: Crown,
-      color: "from-amber-500 to-orange-500",
-      logo: "/img/miCamino/logo cchia.png",
-      logoBg: "white",
-      destacado: true,
     },
     {
       periodo: "2024 - Actual",
@@ -67,6 +54,27 @@ export default function MiCamino() {
       descripcion: "Con una comunidad de más de 507.000 seguidores comparto mi historia e inspiro a quienes, como yo, vienen de otros mundos y quieren adentrarse en tecnología.",
       icono: Sparkles,
       color: "from-[#00c5c5] to-[#00a5a5]",
+    },
+    {
+      periodo: "2025 - Actual",
+      titulo: "CMO · Informatik-AI",
+      subtitulo: "Chief Marketing Officer",
+      descripcion: "Lidero la estrategia de comunicación y posicionamiento de Informatik-AI, empresa especializada en soluciones de inteligencia artificial. Combino experiencia tecnológica y presencia digital para construir puentes entre la IA y las personas.",
+      icono: Briefcase,
+      color: "from-violet-500 to-purple-600",
+      logo: "/img/miCamino/logo informatik-ai.png",
+      logoBg: "white",
+    },
+    {
+      periodo: "2026 - Actual",
+      titulo: "Vicepresidenta · CCHIA",
+      subtitulo: "Cámara Chilena de Inteligencia Artificial",
+      descripcion: "Elegida Vicepresidenta de la Cámara Chilena de Inteligencia Artificial, el organismo que reúne a las empresas y profesionales que lideran la adopción responsable de la IA en Chile. Un honor que refleja el camino recorrido y el compromiso con el futuro de la tecnología en nuestro país.",
+      icono: Crown,
+      color: "from-amber-500 to-orange-500",
+      logo: "/img/miCamino/logo cchia.png",
+      logoBg: "white",
+      destacado: true,
     },
   ];
 
