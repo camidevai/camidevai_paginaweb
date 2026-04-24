@@ -584,7 +584,7 @@ export default function ComingSoonPage() {
       </div>
 
       {/* Música de fondo exclusiva para esta página */}
-      <BackgroundMusic audioSrc="/audio/background-contacto.mp3" autoPlay={true} />
+      <BackgroundMusic audioSrc="/audio/background-contacto.mp3" autoPlay={true} immediatePlay={true} />
     </div>
   );
 }

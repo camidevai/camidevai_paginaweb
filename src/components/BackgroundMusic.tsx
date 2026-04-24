@@ -4,36 +4,48 @@ import { Volume2, VolumeX, Music } from 'lucide-react';
 interface BackgroundMusicProps {
   audioSrc: string;
   autoPlay?: boolean;
+  immediatePlay?: boolean;
 }
 
 const BackgroundMusic: React.FC<BackgroundMusicProps> = ({
   audioSrc,
-  autoPlay = true
+  autoPlay = true,
+  immediatePlay = false,
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [showControls, setShowControls] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Iniciar reproducción después de la interacción del usuario
+  // Intento de reproducción inmediata al montar (para /contactame)
   useEffect(() => {
+    if (!immediatePlay || !audioRef.current) return;
+    audioRef.current.volume = 0.2;
+    audioRef.current.play()
+      .then(() => {
+        setIsPlaying(true);
+        setHasInteracted(true);
+      })
+      .catch(() => {
+        // El navegador bloqueó el autoplay: esperar primera interacción
+      });
+  }, [immediatePlay]);
+
+  // Reproducción al primera interacción (comportamiento por defecto)
+  useEffect(() => {
+    if (immediatePlay) return;
     const handleUserInteraction = () => {
       if (!hasInteracted) {
         setHasInteracted(true);
         if (autoPlay && audioRef.current) {
-          audioRef.current.volume = 0.2; // Volumen bajo por defecto
+          audioRef.current.volume = 0.2;
           audioRef.current.play()
-            .then(() => {
-              setIsPlaying(true);
-            })
-            .catch(error => {
-              console.error('Error al reproducir audio:', error);
-            });
+            .then(() => setIsPlaying(true))
+            .catch(error => console.error('Error al reproducir audio:', error));
         }
       }
     };
 
-    // Eventos de interacción del usuario
     document.addEventListener('click', handleUserInteraction);
     document.addEventListener('touchstart', handleUserInteraction);
     document.addEventListener('keydown', handleUserInteraction);
@@ -43,7 +55,7 @@ const BackgroundMusic: React.FC<BackgroundMusicProps> = ({
       document.removeEventListener('touchstart', handleUserInteraction);
       document.removeEventListener('keydown', handleUserInteraction);
     };
-  }, [hasInteracted, autoPlay]);
+  }, [hasInteracted, autoPlay, immediatePlay]);
 
   const togglePlayPause = () => {
     if (audioRef.current) {
