@@ -115,10 +115,14 @@ export default function ComingSoonPage() {
   };
 
   const handleSubmit = async () => {
+    if (!EMAIL_JS_CONFIG.SERVICE_ID || !EMAIL_JS_CONFIG.TEMPLATE_ID || !EMAIL_JS_CONFIG.PUBLIC_KEY) {
+      alert('Error de configuración: faltan las variables de entorno de EmailJS. Contacta al administrador.');
+      return;
+    }
+
     setLoading(true);
 
     try {
-      // Preparar datos para EmailJS (variables del template)
       const emailData = {
         user_name: formData.user_name,
         user_email: formData.user_email,
@@ -127,19 +131,21 @@ export default function ComingSoonPage() {
         phone: formData.user_phone ? `${formData.country_code} ${formData.user_phone}` : 'No proporcionado',
         budget: formData.budget || 'No especificado',
         message: formData.message || 'Sin mensaje adicional',
+        origin: formData.user_origin || 'No especificado',
       };
 
       await emailjs.send(
         EMAIL_JS_CONFIG.SERVICE_ID,
         EMAIL_JS_CONFIG.TEMPLATE_ID,
         emailData,
-        EMAIL_JS_CONFIG.PUBLIC_KEY
+        { publicKey: EMAIL_JS_CONFIG.PUBLIC_KEY }
       );
 
       setSubmitted(true);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error al enviar:', error);
-      alert('Error al enviar el formulario. Por favor, intenta nuevamente.');
+      const detail = error?.text || error?.message || 'Error desconocido';
+      alert(`Error al enviar el formulario: ${detail}. Por favor, intenta nuevamente.`);
     } finally {
       setLoading(false);
     }

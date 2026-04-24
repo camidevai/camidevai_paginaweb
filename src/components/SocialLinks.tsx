@@ -2,6 +2,7 @@ import React, { useRef, FormEvent, useState } from 'react';
 import { Instagram, Facebook, Linkedin, MessageSquare, Mail, Users, Sparkles, CalendarDays } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import GoogleCalendarButton from './GoogleCalendarButton';
+import { EMAIL_JS_CONFIG } from '../config/constants';
 
 const socialLinks = [
   {
@@ -46,15 +47,16 @@ export default function SocialLinks() {
 
     try {
       await emailjs.sendForm(
-        'service_t0cvv27',
-        'template_lh7gtfd',
+        EMAIL_JS_CONFIG.SERVICE_ID,
+        EMAIL_JS_CONFIG.TEMPLATE_ID,
         formRef.current,
-        { publicKey: '1aZEaVP20Ayfhpkp0' }
+        { publicKey: EMAIL_JS_CONFIG.PUBLIC_KEY }
       );
       alert('Correo enviado correctamente');
       formRef.current.reset();
     } catch (error) {
-      alert('Error al enviar el correo: ');
+      console.error('Error EmailJS:', error);
+      alert('Error al enviar el correo. Por favor, intenta nuevamente.');
     } finally {
       setLoading(false);
     }
